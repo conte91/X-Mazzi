@@ -16,7 +16,13 @@ proc paciocca { geni length lofstring tokeep tocreate paciocno } {
 
       puts $i
       puts $newgeni
-      lset newgeni $i [list $i [[lindex $functions [ random 0 $nfunctions ] ]  [lindex $geni [ random 0 [llength $geni ] ] 1 ] [lindex $geni [ random 0 [ llength $geni ]] 1 ] $lofstring ]]
+      set stringRand [lindex $geni [ random 0 [llength $geni ] ] 1 ]
+      puts "$stringRand"
+      set stringRand2 [lindex $geni [ random 0 [ llength $geni ]] 1 ]
+      puts "$stringRand2"
+      set funcname [lindex $functions [ random 0 $nfunctions ] ]
+      puts "$funcname"
+      lset newgeni $i [list 0 [$funcname $stringRand $stringRand2 $lofstring ]]
     }
   }
 

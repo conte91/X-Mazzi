@@ -19,7 +19,10 @@ proc mazziPowa { s1 celle } {
     }
   }
 
-  redirect -variable powa {report_power} 
-  regexp -- "Cell Leakage Power\\s+=\\s+\(\[0-9.\]+\)\\s+.*$" "$powa" c  b
+  set lagrazianoisready 0
+  while {$lagrazianoisready == 0} {
+    redirect -variable powa {report_power} 
+    set lagrazianoisready [regexp -- "Cell Leakage Power\\s+=\\s+\(\[0-9.\]+\)\\s+.*$" "$powa" c  b]
+  }
   return $b
 }

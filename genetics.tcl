@@ -13,10 +13,11 @@ proc genetics { } {
   } 
   puts $cells
   set count [llength $cells]
+  puts "Optimizing $count cells with $togenerate individuals per generation...\n"
 
   #Initialize vector
   set geni {}
-  for { set i 0 } { $i < $count } { incr i } {
+  for { set i 0 } { $i < $togenerate } { incr i } {
     #puts "Executing $i"
     #puts [lindex $geni [expr $i]]
     lappend geni  {0 0}
@@ -25,18 +26,22 @@ proc genetics { } {
   set geni [paciocca $geni $togenerate $count 0 $togenerate 1]
 
   for { set j 0 } { $j < 600 } { incr j } {
-    for { set i 0 } { $i < $count } { incr i } {
+    for { set i 0 } { $i < $togenerate } { incr i } {
       #puts "Executing $i"
       #puts [lindex $geni [expr $i]]
-      lset geni  $i 0  [mazziPowa [lindex [lindex $geni [expr $i]] 1] $cells]
+      lset geni  $i 0  [mazziPowa [lindex [lindex $geni $i] 1] $cells]
     }
 
     #puts "\n\n\nbefore: $geni\n\n\n"
-    set geni [lsort -integer -index 0 $geni]
+    set geni [lsort -real -index 0 $geni]
 
     #puts "\n\n\nafter: $geni\n\n\n"
 
-    set geni [paciocca $geni $togenerate $count $tokeep 1 2 ]
+    set geni [paciocca $geni $togenerate $count $tokeep 2 1 ]
+    if { [expr $j % 20] == 0 } {
+      puts "Fatte venti iterazioni"
+    }
+
   }
 
   for { set i 0 } { $i < [llength $geni] } { incr i } {
@@ -45,7 +50,7 @@ proc genetics { } {
     lset geni  $i 0  [mazzi [lindex [lindex $geni [expr $i]] 1]]
     lset cells $i 
   }
-  lset geni [lsort -integer -index 0 $geni]
+  lset geni [lsort -real -index 0 $geni]
   puts "\n\n\nafter: $geni\n\n\n"
   puts "\n\n\n\n"
   report_power
