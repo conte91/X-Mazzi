@@ -1,0 +1,10 @@
+command.log
+default.svf
+synthesis.tcl
+syn_c1908.tcl
+synthesis_1_constraints.tcl
+power_features.tcl
+pt_analysis.tcl
+*~
+*.swp
+*.log
