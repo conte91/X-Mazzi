@@ -1,0 +1,14 @@
+set A [get_cells *] ;#A will be a LIST of COLLECTIONS, each collection contains all the attributes of a single cell
+
+foreach_in_collection i $A {
+  puts [get_attribute $i full_name]
+}
+
+#now you can get the cell_ref attribute of a single cell to work on it (e.g. swap it with a LVT/HVT cell.)
+
+QUERY_OBJECTS COMMAND!
+
+Redirection on text file
+
+list_attributes -application -class cell
+
