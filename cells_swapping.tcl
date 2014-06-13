@@ -2,6 +2,8 @@
 
 proc cells_swapping {cellName_list Vt_type} {
 
+  puts $cellName_list
+
 	foreach cellname $cellName_list {
 		set alternatives [get_alternative_lib_cells $cellname]
 		#foreach_in_collection name $alternatives {
@@ -24,6 +26,7 @@ proc cells_swapping {cellName_list Vt_type} {
 
 			size_cell $cellname $fullname ;# E.G.: size_cell U12519 CORE65LPHVT_nom_1.00V_25C.db:CORE65LPHVT/HS65_LH_BFX4
 
+      puts "Cazzi"
 			return
 
 	  	}
@@ -44,6 +47,7 @@ proc cells_swapping {cellName_list Vt_type} {
 
 			size_cell $cellname $fullname ;# E.G.: size_cell U12519 CORE65LPHVT_nom_1.00V_25C.db:CORE65LPHVT/HS65_LH_BFX4
 
+      puts "Cazzi"
 			return
 
 	  	}
