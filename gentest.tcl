@@ -8,4 +8,4 @@ source ./scripts/randString.tcl
 source ./scripts/cells_swapping.tcl
 source ./scripts/mazziPowa.tcl
 source ./scripts/genetics.tcl
-genetics
+genetics 2

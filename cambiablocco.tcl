@@ -1,6 +1,5 @@
 proc cambiablocco { s1 s2 n } {
 
-  #puts "Cambiacar"
   set r1 [random 0 [string length $s1]]
   set r2 [random 0 [string length $s1]]
   # Commented for honor
