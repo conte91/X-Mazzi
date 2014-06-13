@@ -37,6 +37,9 @@ proc genetics { } {
 
     #puts "\n\n\nafter: $geni\n\n\n"
 
+    mazziPowa [lindex [lindex $geni 0] 1] $cells
+    report_timing -nworst 1
+    report_power
     set geni [paciocca $geni $togenerate $count $tokeep 2 1 ]
     if { [expr $j % 20] == 0 } {
       puts "Fatte venti iterazioni"
