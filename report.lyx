@@ -141,9 +141,8 @@ The proposed approach is not as fast as most heuristic approaches, but it
 \end_layout
 
 \begin_layout Standard
-As an example, running the algorithm on the c1908(TODO??) benchmark with
- a required arrival time of 1.25ns(TODO??) yielded a static power saving
- of 95%(TODO??).
+As an example, running the algorithm on the c1908 benchmark achieved an
+ arrival time of 1.0625ns with a static power saving of 96%.
 \end_layout
 
 \end_body
