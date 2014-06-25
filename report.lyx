@@ -1,0 +1,150 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Synthesis and Optimization of Digital Systems (02LVNOV)
+\end_layout
+
+\begin_layout Title
+Low-power contest
+\end_layout
+
+\begin_layout Author
+Francesco Giancane (s211327), Michele Iacobone (s207617), Simone Baratta
+ (s208978)
+\end_layout
+
+\begin_layout Abstract
+The main goal of this contest is to perform static power optimization of
+ combinational circuits, using the two benchmark designs c1908 and c5315
+ using the Dual-
+\begin_inset Formula $V_{th}$
+\end_inset
+
+ technique.
+\end_layout
+
+\begin_layout Abstract
+Since an exhaustive search was not viable, the only possible solution was
+ to develop a heuristic algorithm, so we chose an approach based on genetic
+ algorithms: this approach has the advantage that the static power consumption
+ of the single cells is not necessarily taken into account.
+\end_layout
+
+\begin_layout Abstract
+In order to manage the cell mapping problem using a genetic algorithm, the
+ individuals were chosen to be strings of 1's and 0's; each digit represents
+ the threshold voltage to be used with a specific cell of the network; the
+ fitness function is computed as the total static power consumption of the
+ network, which makes it unnecessary to know the static power of the single
+ cells.
+\end_layout
+
+\begin_layout Section
+The algorithm
+\end_layout
+
+\begin_layout Standard
+The algorithm is written in TCL, which makes it easy to handle strings of
+ digits (such as the representation of our individuals as strings of 0 and
+ 1 characters); several procedures were developed, which are responsible
+ for manipulating the most promising genes in semi-random ways.
+\end_layout
+
+\begin_layout Standard
+At every iteration, the main loop chooses the 3 individuals having the best
+ fitness value (i.e.
+ static power consumption), combines their genes into 17 new individuals
+ using these procedures (so that we have a total of 20 individuals), and
+ then sorts the individuals again, before starting the next generation,
+ according to their fitness values.
+\end_layout
+
+\begin_layout Standard
+The algorithm is implemented in both a low-effort and a high-effort mode:
+ in the low-effort mode, a check is added that stops iterating if the cost
+ function doesn't improve over a certain number of generations (i.e.
+ recombining genes doesn't find any individuals with better fitness); the
+ high-effort mode, on the other hand, performs a predefined number of iterations
+, with a higher chance of stepping out of local minima.
+\end_layout
+
+\begin_layout Section
+Overall performance
+\end_layout
+
+\begin_layout Standard
+The proposed approach is not as fast as most heuristic approaches, but it
+ obtains remarkable results in terms of power saving; additionally, the
+ algorithm is easily adapted to similar problems, by only modifying the
+ fitness function and tweaking the number of kept/generated individuals
+ at every generation.
+\end_layout
+
+\begin_layout Standard
+As an example, running the algorithm on the c1908(TODO??) benchmark with
+ a required arrival time of 1.25ns(TODO??) yielded a static power saving
+ of 95%(TODO??).
+\end_layout
+
+\end_body
+\end_document
