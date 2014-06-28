@@ -69,8 +69,8 @@ Low-power contest
 \end_layout
 
 \begin_layout Author
-Francesco Giancane (s211327), Michele Iacobone (s207617), Simone Baratta
- (s208978)
+Simone Baratta (s208978), Michele Iacobone (s207617), Francesco Giancane
+ (s211327)
 \end_layout
 
 \begin_layout Abstract
@@ -123,9 +123,9 @@ At every iteration, the main loop chooses the 3 individuals having the best
 The algorithm is implemented in both a low-effort and a high-effort mode:
  in the low-effort mode, a check is added that stops iterating if the cost
  function doesn't improve over a certain number of generations (i.e.
- recombining genes doesn't find any individuals with better fitness); the
+ recombining genes doesn't yield any individuals with better fitness); the
  high-effort mode, on the other hand, performs a predefined number of iterations
-, with a higher chance of stepping out of local minima.
+, with higher chances of stepping out of local minima.
 \end_layout
 
 \begin_layout Section
@@ -133,8 +133,8 @@ Overall performance
 \end_layout
 
 \begin_layout Standard
-The proposed approach is not as fast as most heuristic approaches, but it
- obtains remarkable results in terms of power saving; additionally, the
+The proposed approach is not as fast as other heuristic approaches, but
+ it obtains remarkable results in terms of power saving; additionally, the
  algorithm is easily adapted to similar problems, by only modifying the
  fitness function and tweaking the number of kept/generated individuals
  at every generation.
@@ -142,7 +142,8 @@ The proposed approach is not as fast as most heuristic approaches, but it
 
 \begin_layout Standard
 As an example, running the algorithm on the c1908 benchmark achieved an
- arrival time of 1.0625ns with a static power saving of 96%.
+ arrival time of 1.0625ns with a static power saving of 96% compared to the
+ original design.
 \end_layout
 
 \end_body
